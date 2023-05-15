@@ -11,9 +11,6 @@ private:
 
 public:
   sortingAlgo(vector<int> a) { arrElem = a; }
-
- 
-
   // bubble sort overloaded function
   void sort(char c) {
     for (int i = arrElem.size() - 1; i >= 1; i--) {
@@ -23,21 +20,27 @@ public:
       }
     }
   }
-
-
- 
-
-
- 
-
-      sort(left, j);
+     sort(left, j);
       sort(i, right);
     }
   }
 
  
+// selection sort overloaded function
+  void sort(bool b) {
+    int minIndex;
+    for (int i = 0; i < arrElem.size() - 1; i++) {
+      minIndex = i;
+      for (int j = i; j < arrElem.size(); j++) {
+        if (arrElem[j] < arrElem[minIndex]) {
+          minIndex = j;
+        }
+      }
+      swap(arrElem[i], arrElem[minIndex]);
+    }
+  }
 
-  void printSortedArr() {
+ void printSortedArr() {
     for (int i = 0; i < arrElem.size(); i++) {
       cout << arrElem[i] << " ";
     }
@@ -45,14 +48,10 @@ public:
   }
 };
 
- 
 
 int main() {
   vector<int> arrayElements = {14, 30, 10, 12, 16};
   sortingAlgo newObj(arrayElements);
-
- 
-
   // appy any method on created object, for instance:
   newObj.sort();
   newObj.sort('b');
